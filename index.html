@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="c:\Users\ahero\Downloads\67.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Name Finder Website | By Sameer</title>
+
+<style>
+  /* Colorful Animated Background */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    color: white;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+
+  h1 { 
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4); 
+    font-size: 2.8rem;
+    margin-top: 40px;
+  }
+
+  .controls {
+    margin-bottom: 30px;
+  }
+
+  select {
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 25px;
+    border: 2px solid white;
+    font-size: 16px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-weight: bold;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  select:hover {
+    background: white;
+    color: #e73c7e;
+  }
+
+  select option {
+    background: #e73c7e;
+    color: white;
+  }
+
+  #names {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .name-box {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 18px 10px;
+    border-radius: 15px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    border-bottom: 4px solid #e73c7e;
+  }
+
+  .name-box:hover {
+    transform: translateY(-10px);
+    background: #fff;
+    color: #e73c7e;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  }
+
+  /* Footer Styling */
+  footer {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 25px;
+    margin-top: 50px;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+
+  footer p {
+    margin: 8px 0;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  footer a {
+    color: #23d5ab;
+    text-decoration: none;
+    font-weight: bold;
+    background: rgba(255,255,255,0.1);
+    padding: 5px 12px;
+    border-radius: 15px;
+    transition: 0.3s;
+  }
+
+  footer a:hover {
+    background: #23d5ab;
+    color: black;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="content">
+  <h1>✨ Name Finder Website ✨</h1>
+  <p style="font-size: 1.1rem; opacity: 0.9;">Duniya bhar ke pyare names talash karein</p>
+
+  <div class="controls">
+    <select id="religion" onchange="showNames()">
+      <option value="">Choose Religion</option>
+      <option value="islam">☪️ Islam</option>
+      <option value="christian">✝️ Christian</option>
+      <option value="hindu">🕉️ Hindu</option>
+    </select>
+
+    <select id="gender" onchange="showNames()">
+      <option value="">Choose Gender</option>
+      <option value="boys">👦 Boys</option>
+      <option value="girls">👧 Girls</option>
+    </select>
+  </div>
+
+  <div id="names"></div>
+</div>
+
+<footer>
+  <p>Made with  by <b>Sameer</b></p>
+  <p>Contact Us: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=officialswiftlygo@gmail.com" target="_blank">officialswiftlygo@gmail.com</a></p>
+</footer>
+
+<script>
+// Data with many names
+const data = {
+  islam: {
+    boys: ["Muhammad", "Ayan", "Ali", "Ahmed", "Zain", "Usman", "Hassan", "Hussain", "Omar", "Hamza", "Abdullah", "Bilal", "Zaid", "Mustafa", "Ibrahim", "Yahya", "Arham", "Rayyan", "Ahad", "Saad", "Talha", "Anas", "Sufyan", "Rohaan", "Shahzain", "Haider", "Faizan", "Umer", "Rehan", "Farhan", "Asad", "Waleed", "Junaid", "Taha", "Aariz", "Azlan", "Eshan", "Faris", "Hashir", "Irfan", "Jawad", "Kamran", "Luqman", "Muneeb", "Nabeel", "Owais", "Qasim", "Rizwan", "Sami", "Umair", "Waqas", "Yasir", "Zubair", "Afaq", "Basil", "Daniyal", "Eesa", "Fahad", "Ghufran", "Haris", "Imran", "Jibran", "Kashif", "Liaquat", "Mohsin", "Noman", "Parvez", "Qadir", "Raheel", "Salman", "Taimoor", "Ubaid", "Vadi", "Wasim", "Xavier", "Younus", "Zeeshan", "Shayan", "Ahsan", "Zaryab", "Sarmad", "Asif", "Haroon"],
+    girls: ["Ayesha", "Fatima", "Zainab", "Maryam", "Hira", "Noor", "Iqra", "Sana", "Sara", "Dua", "Anaya", "Alishba", "Amna", "Hania", "Hoora", "Inaya", "Javeria", "Khadija", "Laiba", "Mahnoor", "Mehak", "Nida", "Rida", "Sadia", "Tayyaba", "Urwa", "Wajiha", "Yumna", "Zoya", "Areeba", "Bushra", "Eshal", "Fiza", "Ghazala", "Humaira", "Iffat", "Kinza", "Lubna", "Maliha", "Noreen", "Pareesa", "Quratulain", "Ramsha", "Sania", "Tehreem", "Umm-e-Hani", "Verda", "Warda", "Yusra", "Zimal", "Aleena", "Farwa", "Gul", "Heeba", "Insha", "Jannat", "Komal", "Lareeib", "Minal", "Nimra", "Oshna", "Palwasha", "Rameen", "Sidra", "Tooba", "Urooj", "Wania", "Zunaira", "Manahil", "Amara", "Sahar"]
+  },
+  christian: {
+    boys: ["John", "David", "Michael", "Joseph", "Daniel", "Paul", "James", "Peter", "Matthew", "Luke", "Mark", "Andrew", "Simon", "Thomas", "Philip", "Stephen", "Timothy", "Joshua", "Samuel", "Aaron", "Isaac", "Noah", "Ethan", "Liam", "William", "Benjamin", "Lucas", "Alexander", "Jacob", "Jack", "Ryan", "Kevin", "Robert", "Christopher", "George", "Edward", "Arthur", "Henry", "Charles", "Oscar", "Leo", "Sebastian", "Max", "Felix", "Julian", "Adrian", "Gabriel", "Nathan", "Caleb", "Elijah", "Liam", "Mason", "Logan", "Oliver"],
+    girls: ["Mary", "Anna", "Grace", "Sophia", "Emma", "Olivia", "Sarah", "Elizabeth", "Ruth", "Esther", "Martha", "Rachel", "Rebecca", "Leah", "Hannah", "Abigail", "Maria", "Clara", "Julia", "Catherine", "Margaret", "Alice", "Rose", "Lily", "Daisy", "Violet", "Mia", "Ava", "Isabella", "Charlotte", "Amelia", "Harper", "Evelyn", "Abby", "Bella", "Chloe", "Dorothy", "Elena", "Faith", "Gloria", "Hazel", "Iris", "Jade", "Kayla", "Lucy", "Maya", "Nora", "Pearl", "Ruby", "Stella", "Victoria", "Zoe"]
+  },
+  hindu: {
+    boys: ["Arjun", "Rahul", "Krishna", "Vikram", "Rohan", "Amit", "Aditya", "Aryan", "Aavish", "Bharat", "Chaitanya", "Deepak", "Dev", "Eshwar", "Ganesh", "Gautam", "Hardik", "Ishaan", "Jay", "Karan", "Kartik", "Laksh", "Manish", "Mayank", "Nakul", "Om", "Parth", "Pranav", "Raj", "Rishi", "Sandeep", "Shivam", "Siddharth", "Tushar", "Utkarsh", "Varun", "Vijay", "Yash", "Yuvraj", "Abhinav", "Ansh", "Ayush", "Daksh", "Hrithik", "Inder", "Jatin", "Kunal", "Madhav", "Nikhil", "Piyush", "Ranveer", "Sanjay"],
+    girls: ["Priya", "Anjali", "Kavita", "Sneha", "Pooja", "Neha", "Aadhya", "Aarti", "Bhavna", "Chhavi", "Deepika", "Divya", "Esha", "Gauri", "Ishani", "Ishita", "Janhvi", "Jyoti", "Kajal", "Khushi", "Kiran", "Lata", "Meera", "Mansi", "Nandini", "Nisha", "Pallavi", "Payal", "Radha", "Riya", "Sakshi", "Shanti", "Shruti", "Swati", "Tanvi", "Trisha", "Vanshika", "Vidya", "Aparna", "Avni", "Barkha", "Dhara", "Ira", "Kashish", "Megha", "Navya", "Prisha", "Rani", "Sia", "Vanya", "Kriti", "Shreya"]
+  }
+};
+
+function showNames() {
+  let religion = document.getElementById("religion").value;
+  let gender = document.getElementById("gender").value;
+  let namesDiv = document.getElementById("names");
+
+  namesDiv.innerHTML = "";
+
+  if (religion && gender) {
+    let names = data[religion][gender];
+
+    names.forEach(name => {
+      let div = document.createElement("div");
+      div.className = "name-box";
+      div.innerText = name;
+      namesDiv.appendChild(div);
+    });
+  }
+}
+</script>
+
+</body>
+</html>
